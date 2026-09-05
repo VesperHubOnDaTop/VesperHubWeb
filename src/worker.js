@@ -35,8 +35,8 @@ function base64ToBytes(b64) {
 }
 
 async function handleLogin(env) {
-  const CLIENT_ID = env.DISCORD_CLIENT_ID;
-  const REDIRECT_URI = env.DISCORD_REDIRECT_URI;
+  const CLIENT_ID = env.DISCORD_CLIENT_ID || "1541769884743237682";
+  const REDIRECT_URI = env.DISCORD_REDIRECT_URI || "https://vesperhubweb01.oppothai2526kk.workers.dev/api/discord-callback";
   const SCOPE = "identify guilds.join";
   if (!CLIENT_ID || !REDIRECT_URI) return jsonResponse({ error: "Missing Discord OAuth config" }, 500);
   const url = `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=${SCOPE}`;
